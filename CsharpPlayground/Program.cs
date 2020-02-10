@@ -7,6 +7,10 @@ namespace CsharpPlayground
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            AdvancedLINQ.SmallNumbers();
+            AdvancedLINQ.SoldProducts();
+            AdvancedLINQ.WhereIndex();
+            AdvancedLINQ.Mapping();
         }
     }
 }
