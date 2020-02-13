@@ -11,6 +11,10 @@ namespace CsharpPlayground
             AdvancedLINQ.SoldProducts();
             AdvancedLINQ.WhereIndex();
             AdvancedLINQ.Mapping();
+            AdvancedLINQ.SkipAndTake();
+            AdvancedLINQ.Compare();
+            AdvancedLINQ.Combine();
+            AdvancedLINQ.SelectMany();
         }
     }
 }

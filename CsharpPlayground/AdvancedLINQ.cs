@@ -62,5 +62,53 @@ namespace CsharpPlayground
                 Console.WriteLine(textNum);
             }
         }
+
+        public static void SkipAndTake()
+        {
+            int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            var first3 = numbers.Take(3);
+            var numbersLess6 = numbers.TakeWhile(c => c < 6);
+
+            foreach (var i in first3)
+            {
+                Console.WriteLine(i);
+            }
+
+            foreach (var i in numbersLess6)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+        public static void Compare()
+        {
+            var wordsA = new string[] { "cherry", "apple", "blueberry" };
+            var wordsB = new string[] { "cherry", "apple", "blueberry" };
+            var wordsC = new string[] { "apple", "apple", "blueberry" };
+
+            var test = wordsA.SequenceEqual(wordsB);
+            var test1 = wordsA.SequenceEqual(wordsC);
+
+            Console.WriteLine($"{test}-{test1}");
+        }
+
+        public static void Combine()
+        {
+            int[] A = { 0, 2, 4, 5, 6 };
+            int[] B = { 1, 3, 5, 7, 8 };
+
+            int total = A.Zip(B, (a, b) => a * b).Sum();
+
+            Console.WriteLine($"total is {total}");
+        }
+
+        public static void SelectMany()
+        {
+            int[] A = { 0, 2, 4, 5, 6, 8, 9 };
+            int[] B = { 1, 3, 5, 7, 8 };
+
+            var a = A.SelectMany(list => B, (p, c) => new { p, c });
+        }
     }
 }
