@@ -110,5 +110,55 @@ namespace CsharpPlayground
 
             var a = A.SelectMany(list => B, (p, c) => new { p, c });
         }
+
+        public static void LazyQuery()
+        {
+            int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            int i = 0;
+
+            var q = numbers.Select(_ => ++i);
+
+            foreach (var a in q)
+            {
+                Console.WriteLine($"v={a},i={i}");
+            }
+        }
+
+        public static void EagerQuery()
+        {
+            int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            int i = 0;
+
+            var q = numbers.Select(_ => ++i).ToList();
+
+            foreach (var a in q)
+            {
+                Console.WriteLine($"v={a},i={i}");
+            }
+        }
+
+        public static void RunQueryTwoTimes()
+        {
+            int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            var q = numbers.Where(c => c <= 3);
+
+            foreach (var i in q)
+            {
+                Console.WriteLine(i);
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                numbers[i] = -numbers[i];
+            }
+
+            foreach (var i in q)
+            {
+                Console.WriteLine(i);
+            }
+        }
     }
 }

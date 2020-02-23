@@ -15,6 +15,9 @@ namespace CsharpPlayground
             AdvancedLINQ.Compare();
             AdvancedLINQ.Combine();
             AdvancedLINQ.SelectMany();
+            AdvancedLINQ.LazyQuery();
+            AdvancedLINQ.EagerQuery();
+            AdvancedLINQ.RunQueryTwoTimes();
         }
     }
 }
