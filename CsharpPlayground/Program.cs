@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using EFDataAccess;
+using System.Threading.Tasks;
 
 namespace CsharpPlayground
 {
@@ -6,6 +7,15 @@ namespace CsharpPlayground
     {
         static async Task Main(string[] args)
         {
+            var e = new Email
+            {
+                EmailAddress = "test"
+            };
+
+            using var context = new PeopleContext();
+            context.Emails.Add(e);
+            context.SaveChanges();
+
             // Console.WriteLine("Hello World!");
             // AdvancedLINQ.SmallNumbers();
             // AdvancedLINQ.SoldProducts();
