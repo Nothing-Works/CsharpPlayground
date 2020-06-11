@@ -1,4 +1,4 @@
-﻿using EFDataAccess;
+﻿using System;
 using System.Threading.Tasks;
 
 namespace CsharpPlayground
@@ -7,14 +7,22 @@ namespace CsharpPlayground
     {
         static async Task Main(string[] args)
         {
-            var e = new Email
-            {
-                EmailAddress = "test"
-            };
-
-            using var context = new PeopleContext();
-            context.Emails.Add(e);
-            context.SaveChanges();
+            Foo(1);
+            // var a = new IEnumerablePlay();
+            // var e = a.Get();
+            //
+            // foreach (var i in e)
+            // {
+            //     Console.WriteLine(i);
+            // }
+            // var e = new Email
+            // {
+            //     EmailAddress = "test"
+            // };
+            //
+            // using var context = new PeopleContext();
+            // context.Emails.Add(e);
+            // context.SaveChanges();
 
             // Console.WriteLine("Hello World!");
             // AdvancedLINQ.SmallNumbers();
@@ -32,7 +40,23 @@ namespace CsharpPlayground
             // await AsyncAndAwait.Go();
             // await AsyncAndAwaitBetter.Go();
             // await AsyncAndAwaitBetter.Go1();
-            await AsyncAndAwaitFinal.Go();
+            // await AsyncAndAwaitFinal.Go();
+        }
+
+        //tail-call
+        private static void Foo(int i)
+        {
+            if (i == 1000000)
+            {
+                return;
+            }
+
+            if (i % 100 == 0)
+            {
+                Console.WriteLine(i);
+            }
+
+            Foo(i + 1);
         }
     }
 }
