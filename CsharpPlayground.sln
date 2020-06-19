@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFDataAccess", "EFDataAcces
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcFromTim", "MvcFromTim\MvcFromTim.csproj", "{F359BC81-927A-4DD8-9C63-60A3B831B6C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "efcore1", "efcore1\efcore1.csproj", "{EEEA064C-E623-4DD9-ADE9-5B5C4575A6A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "efcore1", "efcore1\efcore1.csproj", "{EEEA064C-E623-4DD9-ADE9-5B5C4575A6A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog", "Blog\Blog.csproj", "{E7649B8D-A48C-4070-8519-A67B2E4CA819}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{EEEA064C-E623-4DD9-ADE9-5B5C4575A6A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEEA064C-E623-4DD9-ADE9-5B5C4575A6A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEEA064C-E623-4DD9-ADE9-5B5C4575A6A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7649B8D-A48C-4070-8519-A67B2E4CA819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7649B8D-A48C-4070-8519-A67B2E4CA819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7649B8D-A48C-4070-8519-A67B2E4CA819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7649B8D-A48C-4070-8519-A67B2E4CA819}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
