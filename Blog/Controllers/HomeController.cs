@@ -16,26 +16,53 @@ namespace Blog.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var posts = _repository.GetAllPosts();
+
+            return View(posts);
         }
 
-        public IActionResult Post()
+        public IActionResult Post(int id)
         {
-            return View();
+            var post = _repository.GetPost(id);
+
+            return View(post);
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(int? id)
         {
-            return View();
+            if (id is null)
+            {
+                return View();
+            }
+
+            var post = _repository.GetPost((int) id);
+
+            return View(post);
         }
 
         [HttpPost]
         public async Task<IActionResult> Edit(Post post)
         {
-            _repository.AddPost(post);
+            if (post.Id == 0)
+            {
+                _repository.AddPost(post);
+            }
+            else
+            {
+                _repository.UpdatePost(post);
+            }
+
 
             await _repository.SaveChangesAsync();
 
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Remove(int id)
+        {
+            _repository.RemovePost(id);
+
+            await _repository.SaveChangesAsync();
             return RedirectToAction("Index");
         }
     }
