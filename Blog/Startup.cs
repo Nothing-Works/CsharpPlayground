@@ -1,4 +1,5 @@
 using Blog.Data;
+using Blog.Data.FileManager;
 using Blog.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,7 @@ namespace Blog
                 .AddEntityFrameworkStores<AppDbContext>();
 
             services.AddTransient<IRepository, Repository>();
+            services.AddTransient<IFileManager, FileManager>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

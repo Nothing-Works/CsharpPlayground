@@ -1,7 +1,7 @@
-﻿@model Post
+﻿@model PostViewModel
 
 <div>
-    <form method="post" asp-controller="Panel" asp-action="Edit">
+    <form method="post" asp-controller="Panel" asp-action="Edit" enctype="multipart/form-data">
         <input asp-for="Id" type="hidden" />
         <div>
             <label asp-for="Title">Title</label>
@@ -10,6 +10,10 @@
         <div>
             <label asp-for="Body">Body</label>
             <input asp-for="Body" />
+        </div>
+        <div>
+            <label asp-for="Image">Image</label>
+            <input asp-for="Image" />
         </div>
 
         <button type="submit">Submit</button>
