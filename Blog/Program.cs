@@ -28,15 +28,16 @@ namespace Blog
                 _roleManager.CreateAsync(adminRole).GetAwaiter().GetResult();
             }
 
-            if (!_context.Users.Any(c => c.UserName == "admin"))
+            if (!_context.Users.Any(c => c.UserName == "admin@test.com"))
             {
                 var adminUser = new IdentityUser
                 {
-                    UserName = "admin",
-                    Email = "admin@test.com"
+                    UserName = "admin@test.com",
+                    Email = "admin@test.com",
+                    EmailConfirmed = true
                 };
 
-                _userManager.CreateAsync(adminUser, "Password1!").GetAwaiter().GetResult();
+                _userManager.CreateAsync(adminUser, "Rooney!1").GetAwaiter().GetResult();
 
                 _userManager.AddToRoleAsync(adminUser, adminRole.Name).GetAwaiter().GetResult();
             }
