@@ -9,7 +9,7 @@
         </div>
         <div>
             <label asp-for="Body">Body</label>
-            <input asp-for="Body" />
+            <textarea asp-for="Body" id="editor"></textarea>
         </div>
         <div>
             <label asp-for="Image">Image</label>
@@ -19,3 +19,9 @@
         <button type="submit">Submit</button>
     </form>
 </div>
+
+@section scripts{
+    <script>
+        $('#editor').trumbowyg()
+    </script>
+}
