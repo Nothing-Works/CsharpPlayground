@@ -8,5 +8,6 @@ namespace Blog.Data.FileManager
     {
         public FileStream ImageStream(string image);
         public Task<string> SaveImage(IFormFile file);
+        public bool RemoveImage(string image);
     }
 }

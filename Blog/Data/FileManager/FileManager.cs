@@ -37,5 +37,16 @@ namespace Blog.Data.FileManager
 
             return fileName;
         }
+
+        public bool RemoveImage(string image)
+        {
+            var file = Path.Combine(_config["Path:Images"], image);
+
+            if (!File.Exists(file)) return false;
+
+
+            File.Delete(file);
+            return true;
+        }
     }
 }
