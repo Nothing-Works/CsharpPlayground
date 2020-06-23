@@ -43,7 +43,10 @@ namespace Blog.Controllers
             {
                 Id = post.Id,
                 Title = post.Title,
-                Body = post.Body
+                Body = post.Body,
+                Description = post.Description,
+                Tags = post.Tags,
+                Category = post.Category
             });
         }
 
@@ -57,7 +60,10 @@ namespace Blog.Controllers
                 Id = vm.Id,
                 Title = vm.Title,
                 Body = vm.Body,
-                Image = fileName
+                Image = fileName,
+                Description = vm.Description,
+                Category = vm.Category,
+                Tags = vm.Tags
             };
 
 

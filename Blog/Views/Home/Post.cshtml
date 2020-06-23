@@ -1,11 +1,24 @@
 ﻿@model Post
-<h2>@Model.Title</h2>
 
-@if (!(Model.Image is null))
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.Description = Model.Description;
+    ViewBag.Keywords = $"{Model.Tags?.Replace(",", "")} {Model.Category}";
+}
+
+<h2>
+    @Model.Title
+</h2>
+
+@if (!
+  (Model.Image is null)
+  )
 {
     var imagePath = $"/Image/{Model.Image}";
 
     <img src="@imagePath" />
 }
 
-<h3>@Html.Raw(Model.Body)</h3>
+<h3>
+    @Html.Raw(Model.Body)
+</h3>

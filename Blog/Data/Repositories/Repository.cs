@@ -24,6 +24,11 @@ namespace Blog.Data.Repositories
             return _context.Posts.ToList();
         }
 
+        public List<Post> GetAllPosts(string category)
+        {
+            return _context.Posts.Where(c => c.Category == category).ToList();
+        }
+
         public void AddPost(Post post)
         {
             _context.Posts.Add(post);
