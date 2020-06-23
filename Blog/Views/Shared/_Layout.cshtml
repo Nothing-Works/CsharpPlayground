@@ -7,22 +7,26 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
     <div>
-        <a asp-controller="Home" asp-action="Index">Index</a>
-        <a asp-controller="Home" asp-action="Edit">Create Post</a>
-        <a asp-controller="Panel" asp-action="Index">Admin Panel</a>
+        <nav>
+            <a asp-controller="Home" asp-action="Index">Index</a>
+            <a asp-controller="Panel" asp-action="Index">Admin Panel</a>
 
-        @if (SignInManager.IsSignedIn(User))
-        {
-            <a asp-controller="Auth" asp-action="Logout">Logout</a>
-        }
-        else
-        {
-            <a asp-controller="Auth" asp-action="Login">Login</a>
-        }
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <a asp-controller="Auth" asp-action="Logout">Logout</a>
+            }
+            else
+            {
+                <a asp-controller="Auth" asp-action="Login">Login</a>
+            }
+        </nav>
+
     </div>
     <div>
         @RenderBody()

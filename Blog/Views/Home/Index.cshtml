@@ -6,6 +6,12 @@
     <ul>
         @foreach (var post in Model)
         {
+            @if (!(post.Image is null))
+            {
+                var imagePath = $"/Image/{post.Image}";
+
+                <img src="@imagePath" />
+            }
             <li>
                 <a asp-controller="Home" asp-action="Post" asp-route-id="@post.Id">@post.Title</a>
             </li>
