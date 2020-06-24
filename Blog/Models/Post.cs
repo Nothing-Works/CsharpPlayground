@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Blog.Models
 {
@@ -12,5 +13,7 @@ namespace Blog.Models
         public string Tags { get; set; }
         public string Category { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        public List<MainComment> MainComments { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿@model Post
+﻿@using System.Security.Cryptography
+@model Post
 
 @{
     ViewBag.Title = Model.Title;
@@ -22,3 +23,19 @@
 <h3>
     @Html.Raw(Model.Body)
 </h3>
+@{
+    await Html.RenderPartialAsync("_MainComment", new CommentViewModel { PostId = Model.Id, MainCommentId = 0 });
+}
+
+@foreach (var c in Model.MainComments)
+{
+    <p>@c.Message - @c.CreatedAt</p>
+    <h4>SubComment</h4>
+    await Html.RenderPartialAsync("_SubComment", new CommentViewModel { PostId = Model.Id, MainCommentId = c.Id });
+
+
+    @foreach (var s in c.SubComments)
+    {
+        <p>@s.Message - @s.CreatedAt</p>
+    }
+}

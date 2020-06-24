@@ -1,6 +1,10 @@
 ﻿using Blog.Data.FileManager;
 using Blog.Data.Repositories;
+using Blog.Models;
+using Blog.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Blog.Controllers
 {
@@ -20,6 +24,32 @@ namespace Blog.Controllers
             var posts = category is null ? _repository.GetAllPosts() : _repository.GetAllPosts(category);
 
             return View(posts);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Comment(CommentViewModel vm)
+        {
+            var post = _repository.GetPost(vm.PostId);
+
+            if (vm.MainCommentId == 0)
+            {
+                post.MainComments ??= new List<MainComment>();
+                post.MainComments.Add(new MainComment { Message = vm.Message });
+
+                _repository.UpdatePost(post);
+            }
+            else
+            {
+                _repository.AddSbuComment(new SubComment
+                {
+                    MainCommentId = vm.MainCommentId,
+                    Message = vm.Message
+                });
+            }
+
+            await _repository.SaveChangesAsync();
+
+            return RedirectToAction("Post", new { id = vm.PostId });
         }
 
         public IActionResult Post(int id)

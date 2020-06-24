@@ -12,6 +12,7 @@ namespace Blog.Data.Repositories
         public void AddPost(Post post);
         public void UpdatePost(Post post);
         public void RemovePost(int id);
+        public void AddSbuComment(SubComment c);
         public Task<bool> SaveChangesAsync();
     }
 }

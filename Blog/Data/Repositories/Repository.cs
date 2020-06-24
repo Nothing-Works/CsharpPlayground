@@ -1,4 +1,5 @@
 ﻿using Blog.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,10 @@ namespace Blog.Data.Repositories
 
         public Post GetPost(int id)
         {
-            return _context.Posts.SingleOrDefault(c => c.Id == id);
+            return _context.Posts
+                .Include(c => c.MainComments)
+                .ThenInclude(c => c.SubComments)
+                .SingleOrDefault(c => c.Id == id);
         }
 
         public List<Post> GetAllPosts()
@@ -42,6 +46,11 @@ namespace Blog.Data.Repositories
         public void RemovePost(int id)
         {
             _context.Posts.Remove(GetPost(id));
+        }
+
+        public void AddSbuComment(SubComment c)
+        {
+            _context.SubComments.Add(c);
         }
 
         public async Task<bool> SaveChangesAsync()
