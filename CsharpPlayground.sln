@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog", "Blog\Blog.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CmdApi", "CmdApi\CmdApi.csproj", "{5C7C750E-5F59-40F8-B7D9-C33D42D29A83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commander", "Commander\Commander.csproj", "{5C60E722-30FB-4D2C-8433-351E72B90662}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{5C7C750E-5F59-40F8-B7D9-C33D42D29A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C7C750E-5F59-40F8-B7D9-C33D42D29A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C7C750E-5F59-40F8-B7D9-C33D42D29A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C60E722-30FB-4D2C-8433-351E72B90662}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C60E722-30FB-4D2C-8433-351E72B90662}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C60E722-30FB-4D2C-8433-351E72B90662}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C60E722-30FB-4D2C-8433-351E72B90662}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
