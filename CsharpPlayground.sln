@@ -13,11 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcFromTim", "MvcFromTim\Mv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "efcore1", "efcore1\efcore1.csproj", "{EEEA064C-E623-4DD9-ADE9-5B5C4575A6A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog", "Blog\Blog.csproj", "{E7649B8D-A48C-4070-8519-A67B2E4CA819}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog", "Blog\Blog.csproj", "{E7649B8D-A48C-4070-8519-A67B2E4CA819}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CmdApi", "CmdApi\CmdApi.csproj", "{5C7C750E-5F59-40F8-B7D9-C33D42D29A83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CmdApi", "CmdApi\CmdApi.csproj", "{5C7C750E-5F59-40F8-B7D9-C33D42D29A83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commander", "Commander\Commander.csproj", "{5C60E722-30FB-4D2C-8433-351E72B90662}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commander", "Commander\Commander.csproj", "{5C60E722-30FB-4D2C-8433-351E72B90662}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroductionIdentity", "IntroductionIdentity\IntroductionIdentity.csproj", "{EFEE2FA3-5751-47AD-B7FC-92D6D1ED8788}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{5C60E722-30FB-4D2C-8433-351E72B90662}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C60E722-30FB-4D2C-8433-351E72B90662}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C60E722-30FB-4D2C-8433-351E72B90662}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFEE2FA3-5751-47AD-B7FC-92D6D1ED8788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFEE2FA3-5751-47AD-B7FC-92D6D1ED8788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFEE2FA3-5751-47AD-B7FC-92D6D1ED8788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFEE2FA3-5751-47AD-B7FC-92D6D1ED8788}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
