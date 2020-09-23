@@ -1,13 +1,28 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using CsharpPlayground.Event;
+using System;
 
 namespace CsharpPlayground
 {
     class Program
     {
-        static async Task Main(string[] args)
+        private static void FilterMain(string path)
         {
-            Foo(1);
+            Console.WriteLine("filter main");
+        }
+
+        static void Main(string[] args)
+        {
+            var email = new EmailService();
+            var videoEncoding = new VideoEncoder();
+            videoEncoding.VideoEncoded2 += email.OnVideoEncoded;
+            videoEncoding.Encoding();
+            // PhotoProcessor.FilterHandler filter = FilterMain;
+            // Action<string> filter = FilterMain;
+
+            // var p = new PhotoProcessor();
+            // p.Process(filter);
+
+            // Foo(1);
             // var a = new IEnumerablePlay();
             // var e = a.Get();
             //
