@@ -10,6 +10,12 @@ namespace BasicAuth
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            //also consider these examples for cookie auth
+            //https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/cookie?view=aspnetcore-3.1
+            //https://docs.microsoft.com/en-gb/aspnet/core/security/authentication/samples?view=aspnetcore-3.1
+            //This for token auth
+            //https://github.com/davidfowl/Todos
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
                     o =>
