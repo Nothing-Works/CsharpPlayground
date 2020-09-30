@@ -29,6 +29,7 @@ namespace BasicAuth.Controllers
 
         [Authorize(Roles = "Admin")]
         //For "Roles" is checking the value under "Role" from the claim.
+        //or The "value" under role manager.
         public IActionResult Role()
         {
             return View();
