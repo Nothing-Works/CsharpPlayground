@@ -21,12 +21,27 @@ namespace BasicAuth.Controllers
             return View();
         }
 
+        [Authorize(Policy = "Claim.DoB")]
+        public IActionResult DoB()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        //For "Roles" is checking the value under "Role" from the claim.
+        public IActionResult Role()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> Authenticate()
         {
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name,"Andy"),
                 new Claim(ClaimTypes.Email,"andy@infosoft.co.nz"),
+                new Claim(ClaimTypes.DateOfBirth,"andy@infosoft.co.nz"),
+                new Claim(ClaimTypes.Role,"Admin"),
                 new Claim("custom values","something I need to know."),
             };
 

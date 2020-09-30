@@ -1,8 +1,11 @@
+using BasicAuth.AuthorizationRequirements;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Security.Claims;
 
 namespace BasicAuth
 {
@@ -23,6 +26,22 @@ namespace BasicAuth
                         o.Cookie.Name = "Andy";
                         o.LoginPath = "/Home/Authenticate";
                     });
+
+            services.AddAuthorization(o =>
+            {
+                //this is the default one.
+                // o.DefaultPolicy = new AuthorizationPolicyBuilder()
+                //     .RequireAuthenticatedUser()
+                //     .RequireClaim(ClaimTypes.DateOfBirth)
+                //     .Build();
+
+                o.AddPolicy("Claim.DoB", builder =>
+                {
+                    builder.AddRequirements(new CustomRequireClaim(ClaimTypes.DateOfBirth));
+                });
+            });
+
+            services.AddScoped<IAuthorizationHandler, CustomRequireClaimHandler>();
 
             services.AddControllersWithViews();
         }
