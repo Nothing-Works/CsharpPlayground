@@ -1,1 +1,16 @@
-﻿<h1>Index</h1>
+﻿@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+
+<h1>Index</h1>
+
+@ViewBag.Greeting World!
+
+@if ((await AuthorizationService.AuthorizeAsync(User, "Claim.DoB")).Succeeded)
+{
+    <h2>good</h2>
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h3>Authenticated</h3>
+}

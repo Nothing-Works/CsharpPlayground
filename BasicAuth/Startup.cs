@@ -1,6 +1,7 @@
 using BasicAuth.AuthorizationRequirements;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,9 +40,15 @@ namespace BasicAuth
                 {
                     builder.AddRequirements(new CustomRequireClaim(ClaimTypes.DateOfBirth));
                 });
+
+                o.AddPolicy("Claim.DoB1", builder =>
+                {
+                    builder.AddRequirements(new OperationAuthorizationRequirement { Name = "Andy" });
+                });
             });
 
             services.AddScoped<IAuthorizationHandler, CustomRequireClaimHandler>();
+            services.AddScoped<IAuthorizationHandler, OperationAuthorizationHandler>();
 
             services.AddControllersWithViews();
         }

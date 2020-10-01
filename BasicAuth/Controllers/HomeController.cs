@@ -9,8 +9,22 @@ namespace BasicAuth.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IAuthorizationService _authorizationService;
+
+        public HomeController(IAuthorizationService authorizationService)
         {
+            _authorizationService = authorizationService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var result = await _authorizationService.AuthorizeAsync(User, "Claim.DoB");
+
+            if (result.Succeeded)
+            {
+                ViewBag.Greeting = "Hello";
+            }
+
             return View();
         }
 
@@ -27,6 +41,12 @@ namespace BasicAuth.Controllers
             return View();
         }
 
+        [Authorize(Policy = "Claim.DoB1")]
+        public IActionResult DoB1()
+        {
+            return View();
+        }
+
         [Authorize(Roles = "Admin")]
         //For "Roles" is checking the value under "Role" from the claim.
         //or The "value" under role manager.
@@ -39,11 +59,12 @@ namespace BasicAuth.Controllers
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name,"Andy"),
-                new Claim(ClaimTypes.Email,"andy@infosoft.co.nz"),
-                new Claim(ClaimTypes.DateOfBirth,"andy@infosoft.co.nz"),
-                new Claim(ClaimTypes.Role,"Admin"),
-                new Claim("custom values","something I need to know."),
+                new Claim(ClaimTypes.Name, "Andy"),
+                new Claim(ClaimTypes.Email, "andy@infosoft.co.nz"),
+                new Claim(ClaimTypes.DateOfBirth, "andy@infosoft.co.nz"),
+                new Claim(ClaimTypes.Role, "Admin"),
+                new Claim("Andy", "Admin"),
+                new Claim("custom values", "something I need to know."),
             };
 
             var identity = new ClaimsIdentity(claims, "Cookies");
