@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.Extensions;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
@@ -47,7 +48,7 @@ namespace JWT.Controllers
             string code,
             string redirect_uri,
             string client_id
-            )
+        )
         {
             var claims = new List<Claim>
             {
@@ -68,7 +69,8 @@ namespace JWT.Controllers
                 creds
             );
 
-            var responseObject = new { access_token = new JwtSecurityTokenHandler().WriteToken(token), token_type = "Bearer" };
+            var responseObject = new
+            { access_token = new JwtSecurityTokenHandler().WriteToken(token), token_type = "Bearer" };
 
             var responseJson = JsonConvert.SerializeObject(responseObject);
             var responseBytes = Encoding.UTF8.GetBytes(responseJson);
@@ -76,6 +78,17 @@ namespace JWT.Controllers
             await Response.Body.WriteAsync(responseBytes, 0, responseBytes.Length);
 
             return Redirect(redirect_uri);
+        }
+
+        [Authorize]
+        public IActionResult Validate()
+        {
+            if (HttpContext.Request.Query.TryGetValue("access_token", out var access_token))
+            {
+                return Ok();
+            }
+
+            return BadRequest();
         }
     }
 }

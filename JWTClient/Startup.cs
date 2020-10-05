@@ -53,6 +53,8 @@ namespace JWTClient
                     };
                 });
 
+            services.AddHttpClient();
+
             services.AddControllersWithViews();
         }
 
