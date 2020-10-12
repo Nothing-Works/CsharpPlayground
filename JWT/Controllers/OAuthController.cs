@@ -47,7 +47,8 @@ namespace JWT.Controllers
             string grant_type,
             string code,
             string redirect_uri,
-            string client_id
+            string client_id,
+            string refresh_token
         )
         {
             var claims = new List<Claim>
@@ -65,12 +66,16 @@ namespace JWT.Controllers
                 JWTSettings.Audience,
                 claims,
                 DateTime.Now,
-                DateTime.Now.AddMinutes(30),
+                grant_type == "refresh_token" ? DateTime.Now.AddMinutes(5) : DateTime.Now.AddMilliseconds(1),
                 creds
             );
 
             var responseObject = new
-            { access_token = new JwtSecurityTokenHandler().WriteToken(token), token_type = "Bearer" };
+            {
+                access_token = new JwtSecurityTokenHandler().WriteToken(token),
+                token_type = "Bearer",
+                refresh_token = "refresh_token"
+            };
 
             var responseJson = JsonConvert.SerializeObject(responseObject);
             var responseBytes = Encoding.UTF8.GetBytes(responseJson);

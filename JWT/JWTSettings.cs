@@ -12,6 +12,7 @@ namespace JWT
 
         public static TokenValidationParameters TokenValidationParameters => new TokenValidationParameters
         {
+            ClockSkew = TimeSpan.Zero,
             ValidateIssuer = true,
             ValidateAudience = true,
             ValidateLifetime = true,

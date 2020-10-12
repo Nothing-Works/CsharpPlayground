@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,7 +12,8 @@ namespace OAuthApi
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication();
+            services.AddAuthentication("Default")
+                .AddScheme<AuthenticationSchemeOptions, CustomAuthenticationHandler>("Default", null);
             services.AddAuthorization(o =>
             {
                 o.DefaultPolicy = new AuthorizationPolicyBuilder().AddRequirements(new JwtRequirement()).Build();
